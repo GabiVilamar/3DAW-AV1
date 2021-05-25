@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+
+    <title>CRUD de Disciplinas</title>
+</head>
+<body>
+  <header> MEU PROJETO </header>
+  <section>
+    <h1>Listagem de Disciplinas</h1>
+    <p>Disciplinas já Cadastradas no Sistema</p>
+    <div class="container">
+    <table>
+    <thead>
+        <tr style="background-color: #fff">
+        <td style="width: 5%">Id</td>
+        <td style="width: 10%">Periodo</td>
+        <td style="width: 25%">Nome</td>
+        <td style="width: 5%">IdPreRequisito</td>
+        <td style="width: 15%">Créditos</td>
+        <td style="width: 20%">Ações</td>
+        </tr>
+    </thead>
+    <tbody>
+        <% if(!results || results.length == 0) {%>
+          <tr>
+              <td colspan="6">Nenhuma Disciplina cadastrada</td>
+          </tr>
+        <%} else {
+          results.forEach(function(disciplina){%>
+            <tr>
+              <td style="width: 5%"><%=disciplina.id%></td>
+              <td style="width: 10%"><%=disciplina.periodo%></td>
+              <td style="width: 40%"><%=disciplina.nome%></td>
+              <td style="width: 10%"><%=disciplina.idPreRequisito%></td>
+              <td style="width:10%"><%=disciplina.creditos%></td>
+              <td id="acao">
+                <a href="/edit/<%=disciplina.id%>" id="edit" > Editar</a>
+                <a href="/delete/<%=disciplina.id%>" id="excluir" onclick="return confirm('Tem certeza?');">Excluir</a>
+              </td>
+            </tr>
+            <% })
+        }%> 
+      </tbody>
+    <tfoot>
+        <tr>
+          <td colspan="6">
+            <a href="/new">Cadastrar Nova Disciplina</a>
+          </td>
+        </tr>
+    </tfoot>
+</table>
+</div>
+</section>
+<script>
+  if(location.href.indexOf('delete=true') !=-1) {
+    alert('Disciplina excluída com Sucesso!');
+  }
+  else if(location.href.indexOf('edit=true') !=-1) {
+    alert('Disciplina editada com Sucesso!');
+  }
+  else if(location.href.indexOf('new=true') !=-1) {
+    alert('Disciplina cadastrada com Sucesso!');
+  }
+  else if(location.href.indexOf('erro') !=-1) {
+    alert('Ocorreu um erro! :(');
+  }
+</script>
+</body>
+</html>

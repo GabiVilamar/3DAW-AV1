@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CRUD de Disciplinas</title>
+        <meta charset="utf-8" />
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+    </head>
+    <body>
+        <section class="new">
+        <h1><%=title%></h1>
+        <p>Preencha os dados abaixo para salvar a Disciplina:</p>
+        <form action="<%=action%>" method="POST">
+            <p>
+                <label>ID: <input type="number" name="id"  value="<%=result.id%>"/></label>
+            </p>
+            <p>
+                <label>Período: <input type="number" name="periodo" value="<%=result.periodo%>"/></label>
+            </p>
+            <p>
+                <label>Nome: <input type="text" name="nome" value="<%=result.nome%>"/></label>
+            </p>
+            <p>
+                <label>IdPréRequisito: <input type="number" name="idPreRequisito" value="<%=result.idPreRequisito%>"/></label>
+            </p>
+            <p>
+                <label>Créditos: <input type="number" name="creditos" value="<%=result.creditos%>"/></label>
+            </p>
+            <p>
+                <a href="/" id="cancelar" >Cancelar</a> | <input type="submit" id="salvar" value="Salvar" />
+            </p>
+        </form>
+    </section>
+    </body>
+</html>
